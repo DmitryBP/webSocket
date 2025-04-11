@@ -8,9 +8,9 @@ export default class WebSocketManager {
   }
 
   private initialize() {
-    this.ws.addEventListener('open', () => {
+    this.ws.addEventListener('open', async () => {
       console.log('Соединение установлено!');
-      this.send('data'); // Отправка данных сразу после подключения
+      await this.handleOpen();
     });
 
     this.ws.addEventListener('message', (e) => {
@@ -28,5 +28,20 @@ export default class WebSocketManager {
 
   public close() {
     this.ws.close();
+  }
+
+  public handleOpen() {
+    const data = {
+      id: '2',
+      type: 'USER_LOGIN',
+      payload: {
+        user: {
+          login: 'Dima_test',
+          password: '123',
+        },
+      },
+    };
+
+    this.send(JSON.stringify(data)); // Отправка данных сразу после подключения
   }
 }
