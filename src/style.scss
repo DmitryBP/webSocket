@@ -1,0 +1,18 @@
+/* src/styles.scss */
+$primary-color: #98d6ff;
+$white: #fff;
+
+body {
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $primary-color;
+
+}
